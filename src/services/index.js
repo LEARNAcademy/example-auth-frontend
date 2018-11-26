@@ -5,10 +5,11 @@ export default class AuthService {
 		this.domain = 'http://localhost:3001'
 	}
 
-	login = (email, password) => {
-		return this.authFetch(`${this.domain}/users`, {
+	login = (credentials) => {
+		console.log(credentials)
+		return this.authFetch(`${this.domain}/users/sign_in`, {
 			method: "POST",
-			body: JSON.stringify(email, password),
+			body: JSON.stringify(credentials),
 		})
 		.then(statusResponse => {
 			let token = statusResponse.headers.get('Authorization')
@@ -21,7 +22,6 @@ export default class AuthService {
 	}
 
 	register = (user) => {
-		console.log(this.domain);
 		return this.authFetch(`${this.domain}/users`, {
 			method: "POST",
 			body: JSON.stringify(user),
@@ -38,6 +38,7 @@ export default class AuthService {
 
 	loggedIn() {
 		const token = this.getToken()
+		// check that token is not blank and is not expired
 		return !!token && !this.isTokenExpired(token)
 	}
 
