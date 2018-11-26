@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import AuthService from './services'
 import Register from './pages/Register'
+import Login from './pages/Login'
 import ProtectedExample from './pages/ProtectedExample'
 import PublicExample from './pages/PublicExample'
 
@@ -22,9 +23,10 @@ class App extends Component {
 					</Switch>
 					// if not logged in (ie Guest User)
 					: <Switch>
+						<Route path="/register" component={Register} />
+						<Route path="/login" component={Login} />
 						<Route path="/public" component={PublicExample} />
 						<Redirect from="/protected" to="/register" />
-						<Route path="/register" component={Register} />
 					</Switch>}
 				</Router>
 			</div>
