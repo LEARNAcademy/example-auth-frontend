@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class PublicExample extends Component {
     render() {
         return (
-            <div>This page is public!</div>
+            <main>This page is public!</main>
         )
     }
 }

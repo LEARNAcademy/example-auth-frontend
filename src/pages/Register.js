@@ -26,7 +26,7 @@ class RegisterPage extends Component {
 		let { firstName, lastName, email, password } = this.state.form.user
 		return (
 			<main>
-				<h2>Welcome! Register here.</h2>
+				<h2 style={{color: `red`}}>Welcome! Register here.</h2>
 				<form onSubmit={this.onSubmit}>
 					<input
 						type="text"
@@ -48,7 +48,7 @@ class RegisterPage extends Component {
 						value={email}
 						onChange={this.onChange}
 					/>
-					{this.state.errors.email && <div>Error: Email  {this.state.errors.email[0]}</div>}
+					{this.state.errors.email && <div>Error: Email {this.state.errors.email[0]}</div>}
 
 					<input
 						type="password"
@@ -56,7 +56,7 @@ class RegisterPage extends Component {
 						value={password}
 						onChange={this.onChange}
 					/>
-					{this.state.errors.password && <div>Error: Password  {this.state.errors.password[0]}</div>}
+					{this.state.errors.password && <div>Error: Password {this.state.errors.password[0]}</div>}
 					<button onSubmit={this.onSubmit}>Register</button>
 
 				</form>
@@ -75,10 +75,9 @@ class RegisterPage extends Component {
 
 	onSubmit = (e) => {
 		e.preventDefault()
-		console.log(this.auth);
+
 		this.auth.register(this.state.form)
 		.then(json => {
-			console.log("Got to second then:", json)
 			if(json.errors) {
 				console.log("!! ERRORS !! ", json.errors);
 				this.setState({
