@@ -10,12 +10,12 @@ class Header extends Component {
 	}
 
 	render() {
-		let loggedIn
+		let loginButton
 
 		if(this.auth.loggedIn() == true) {
-			loggedIn = <li onClick={this.logout}>Logout</li>
+			loginButton = <li onClick={this.logout}>Logout</li>
 		} else {
-			loggedIn = <li><a href="/login">Login</a></li>
+			loginButton = <li><a href="/login">Login</a></li>
 		}
 
 		return (
@@ -24,7 +24,7 @@ class Header extends Component {
 				<nav>
 					<ul>
 						<li>Stuff</li>
-						{ loggedIn }
+						{ loginButton }
 					</ul>
 				</nav>
 			</header>

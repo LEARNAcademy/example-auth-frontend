@@ -75,8 +75,12 @@ export default class AuthService {
 	}
 
 	getUserId = () => {
-		const token = decode(this.getToken());
-		return token.sub
+		if(this.loggedIn()) {
+			const token = decode(this.getToken(), { header: true });
+			return token.sub
+		} else {
+			console.log("you don't have a valid token!");
+		}
 	}
 
 	authFetch = (url, options) => {

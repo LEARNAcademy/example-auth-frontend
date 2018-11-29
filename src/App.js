@@ -23,7 +23,7 @@ class App extends Component {
 
 		return (
 			<div style={styles()}>
-				<Header logout={this.authStatusUpdate}/>
+				<Header logout={this.authStatusUpdate} />
 
 				<Router>
 					{(this.auth.loggedIn())
